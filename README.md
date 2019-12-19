@@ -1,4 +1,10 @@
 # asio2
+
+- clone "update" branch for apply this repo changes:
+>git clone -b update https://github.com/Mainvooid/asio2.git
+
+--- 
+
 ### [README in English](https://github.com/zhllxt/asio2/blob/master/README.en.md) 
 A open source cross-platform c++ library for network programming based on asio,support for tcp,udp,http,rpc,ssl and so on.
 

@@ -1,13 +1,3 @@
-/*
- * COPYRIGHT (C) 2017-2019, zhllxt
- *
- * author   : zhllxt
- * email    : 37792738@qq.com
- * 
- * Distributed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
- * (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
- */
-
 #ifndef __ASIO2_UDP_CLIENT_HPP__
 #define __ASIO2_UDP_CLIENT_HPP__
 
@@ -484,7 +474,14 @@ namespace asio2
 	{
 	public:
 		using udp_client_impl_t<udp_client, asio::ip::udp::socket, asio2::linear_buffer>::udp_client_impl_t;
+	    //callback types
+        using init_cb_t       = std::function<void(void)>;
+        using handshake_cb_t  = std::function<void(asio::error_code ec)>;
+        using connect_cb_t    = std::function<void(asio::error_code ec)>;
+        using recv_cb_t       = std::function<void(std::string_view s)>;
+        using disconnect_cb_t = std::function<void(asio::error_code ec)>;
 	};
+	using kcp_client = udp_client;
 }
 
 #endif // !__ASIO2_UDP_CLIENT_HPP__

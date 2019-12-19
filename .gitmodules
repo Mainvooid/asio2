@@ -1,0 +1,3 @@
+[submodule "asio2/3rd/kcp-hpp"]
+	path = asio2/3rd/kcp-hpp
+	url = https://github.com/Mainvooid/kcp-hpp

@@ -15,7 +15,6 @@
 #pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include <asio2/config.hpp>
 
 #ifdef ASIO_STANDALONE
 	#include <asio/asio.hpp>

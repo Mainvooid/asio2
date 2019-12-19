@@ -1,13 +1,3 @@
-/*
- * COPYRIGHT (C) 2017-2019, zhllxt
- *
- * author   : zhllxt
- * email    : 37792738@qq.com
- * 
- * Distributed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
- * (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
- */
-
 #ifndef __ASIO2_UTIL_HPP__
 #define __ASIO2_UTIL_HPP__
 
@@ -61,10 +51,9 @@ namespace asio2::detail
 	 * The read buffer has to be at least as large
 	 * as the largest possible control frame including
 	 * the frame header.
-	 * refrenced from beast stream.hpp
 	 */
 	static std::size_t constexpr  tcp_frame_size = 1536;
-	static std::size_t constexpr  udp_frame_size = 1024;
+	static std::size_t constexpr  udp_frame_size = 1472;
 	static std::size_t constexpr http_frame_size = 1536;
 }
 

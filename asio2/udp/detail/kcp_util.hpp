@@ -1,15 +1,3 @@
-/*
- * COPYRIGHT (C) 2017-2019, zhllxt
- *
- * author   : zhllxt
- * email    : 37792738@qq.com
- * 
- * Distributed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
- * (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
- *
- * KCP MTU , UDP PACKET MAX LENGTH 576
- */
-
 #ifndef __ASIO2_KCP_UTIL_HPP__
 #define __ASIO2_KCP_UTIL_HPP__
 
@@ -27,7 +15,9 @@
 #include <asio2/base/error.hpp>
 #include <asio2/base/detail/condition_wrap.hpp>
 
-#include <asio2/udp/detail/ikcp.h>
+namespace asio2::detail::kcp{
+#include <asio2/3rd/kcp-hpp/ikcp.hpp>
+}
 
 namespace asio2::detail::kcp
 {
@@ -38,40 +28,6 @@ namespace asio2::detail::kcp
 	#define __KCPHDR_ONEBYTE_ALIGN__
 	#pragma pack(push,1)
 #endif
-//	struct psdhdr
-//	{
-//		unsigned long saddr;
-//		unsigned long daddr;
-//		char mbz;
-//		char ptcl;
-//		unsigned short tcpl;
-//	}__KCPHDR_ONEBYTE_ALIGN__;
-//
-//	struct tcphdr
-//	{
-//		std::uint16_t th_sport;        /* source port */
-//		std::uint16_t th_dport;        /* destination port */
-//		std::uint32_t th_seq;          /* sequence number */
-//		std::uint32_t th_ack;          /* acknowledgement number */
-//#if IWORDS_BIG_ENDIAN
-//		std::uint16_t th_off : 4;      /* data offset */
-//		std::uint16_t th_x2 : 6;       /* (unused) */
-//#else
-//		std::uint16_t th_x2 : 6;       /* (unused) */
-//		std::uint16_t th_off : 4;      /* data offset */
-//#endif
-//		std::uint16_t thf_urg : 1;     /* flags : Urgent Pointer Field Significant */
-//		std::uint16_t thf_ack : 1;     /* flags : Acknowledgement field significant */
-//		std::uint16_t thf_psh : 1;     /* flags : Push Function */
-//		std::uint16_t thf_rst : 1;     /* flags : Reset the connection */
-//		std::uint16_t thf_syn : 1;     /* flags : Synchronize sequence numbers */
-//		std::uint16_t thf_fin : 1;     /* flags : No more data from sender */
-//		std::uint16_t th_win;          /* window */
-//		std::uint16_t th_sum;          /* checksum */
-//		std::uint16_t th_urp;          /* urgent pointer */
-//		std::uint32_t th_option : 24;  /* option */
-//		std::uint32_t th_padding : 8;  /* padding */
-//	}__KCPHDR_ONEBYTE_ALIGN__;
 
 	struct kcphdr
 	{
@@ -86,6 +42,7 @@ namespace asio2::detail::kcp
 		std::uint16_t th_padding : 10;
 		std::uint16_t th_sum;
 	}__KCPHDR_ONEBYTE_ALIGN__;
+	
 #if defined(__GNUC__) || defined(__GNUG__)
 	#undef __KCPHDR_ONEBYTE_ALIGN__
 #elif defined(_MSC_VER)

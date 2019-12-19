@@ -1,13 +1,3 @@
-/*
- * COPYRIGHT (C) 2017-2019, zhllxt
- *
- * author   : zhllxt
- * email    : 37792738@qq.com
- * 
- * Distributed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
- * (See accompanying file LICENSE or see <http://www.gnu.org/licenses/>)
- */
-
 #ifndef __ASIO2_UDP_SERVER_HPP__
 #define __ASIO2_UDP_SERVER_HPP__
 
@@ -515,9 +505,18 @@ namespace asio2
 	{
 	public:
 		using detail::udp_server_impl_t<udp_server_t<session_t>, session_t>::udp_server_impl_t;
+	    //callback types
+        using init_cb_t       = std::function<void(void)>;
+        using start_cb_t      = std::function<void(asio::error_code ec)>;
+        using handshake_cb_t  = std::function<void(asio::error_code ec)>;
+        using connect_cb_t    = std::function<void(std::shared_ptr<asio2::udp_session> & session_ptr)>;
+        using recv_cb_t       = std::function<void(std::shared_ptr<asio2::udp_session> & session_ptr, std::string_view s)>;
+        using disconnect_cb_t = std::function<void(std::shared_ptr<asio2::udp_session> & session_ptr)>;
+        using stop_cb_t       = std::function<void(asio::error_code ec)>;
 	};
 
 	using udp_server = udp_server_t<udp_session>;
+	using kcp_server = udp_server_t<udp_session>;
 }
 
 
