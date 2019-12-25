@@ -61,6 +61,7 @@ namespace asio2::detail
 		 * @function : start the server
 		 * @param host A string identifying a location. May be a descriptive name or
 		 * a numeric address string.
+		 * "0.0.0.0" -> ipv4 ; "::1" -> ipv6 ; "localhost" or empty -> ipv6(default)
 		 * @param service A string identifying the requested service. This may be a
 		 * descriptive name or a numeric string corresponding to a port number.
 		 */
@@ -87,6 +88,7 @@ namespace asio2::detail
 		 * @function : start the server
 		 * @param host A string identifying a location. May be a descriptive name or
 		 * a numeric address string.
+		 * "0.0.0.0" -> ipv4 ; "::1" -> ipv6 ; "localhost" or empty -> ipv6(default)
 		 * @param service A string identifying the requested service. This may be a
 		 * descriptive name or a numeric string corresponding to a port number.
 		 */
